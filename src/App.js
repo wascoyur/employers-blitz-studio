@@ -1,12 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import SwapData from "./services/swap-service";
+import React from 'react';
+//import SwapData from './services/swap-service';
 
-function App() {
-  
-  return (
-    <div>App</div>
-  );
-}
+//const swap = new SwapData();
 
+const App = () => {
+  return <div>App</div>;
+};
 export default App;
