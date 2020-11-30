@@ -1,16 +1,14 @@
+const _apiBase = 'https://pokeapi.co/api/v2/';
 
-export default class SwapData{
-  _apiBase = 'https://pokeapi.co/api/v2/pokemon/';
-  
-  async getResource(url){
-    const res = await fetch(`${this._apiBase}`)
-    if (!res.ok) {
-      throw new Error('Could not fetch')
-    }
-    return await res.json()
+const swapData = async (id) => {
+  const res = await fetch(`${_apiBase}${id}`);
+  if (!res.ok) {
+    throw new Error('Что-то пошло не так');
   }
-}
-const swapData = new SwapData();
-const result = swapData.getResource();
-console.log(result);
+  const o = await res.json();
+  console.log('o', o);
 
+  return await o;
+};
+
+export default swapData;
