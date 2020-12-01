@@ -1,13 +1,16 @@
-import React from 'react';
-import swapData from './services/swap-service';
+import React, { Fragment } from 'react';
+import Header from './components/Header';
+import ItemPage from './components/card/'
 
-(async () => {
-  let out = swapData(`pokemon/`);
-  console.log('App:', out);
-})();
+
 
 const App = () => {
-  return <div>App</div>;
+  return( 
+  <Fragment>
+        <Header />;
+        <ItemPage/>
+  </Fragment> 
+  )
 };
 
 export default App;
