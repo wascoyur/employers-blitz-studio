@@ -1,16 +1,19 @@
 import React, { Fragment } from 'react';
-import Header from './components/Header';
-import ItemPage from './components/card/'
-
+import Header from './components/header/Header';
+import ItemPage from './components/main-page/'
+import BrowserRouter, {Route} from 'react-router-dom'
 
 
 const App = () => {
   return( 
   <Fragment>
-        <Header />;
-        <ItemPage/>
+      <Header />
+      
+      <ItemPage/>
+        
   </Fragment> 
   )
 };
 
 export default App;
+ 

@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import DetailPage from './detail-page';
-import CardItem from './CardItem';
+import CardItem from '../card/CardItem';
 import { getData } from '../../services/swap-service';
-import ItemList from './item-list';
+import ItemList from '../item-list/item-list';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export default class ItemPage extends Component {
@@ -30,19 +29,19 @@ export default class ItemPage extends Component {
   render() {
     return (
       <Fragment>
-        <Container>
-          <Row>
-            <Col>
-              <ItemList
-                getActive={this.getActiveItem}
-                itemList={this.state.itemList}
-              />
-            </Col>
-            <Col>
-              <CardItem activeItem={this.state.activeItem} />
-            </Col>
-          </Row>
-        </Container>
+          <Container>
+            <Row>
+              <Col>
+                <ItemList
+                  getActive={this.getActiveItem}
+                  itemList={this.state.itemList}
+                />
+              </Col>
+              <Col>
+                <CardItem activeItem={this.state.activeItem} />
+              </Col>
+            </Row>
+          </Container>
       </Fragment>
     );
   }

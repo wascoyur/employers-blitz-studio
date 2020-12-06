@@ -6,7 +6,9 @@ export default class Header extends Component {
     return (
       <Navbar bg="dark" variant="secondary">
         <Nav>
-          <Nav.Link>Link</Nav.Link>
+          <Nav.Link>Рликамп</Nav.Link>
+          <Nav.Link>Саватар</Nav.Link>
+          <Nav.Link>Субердумп</Nav.Link>
         </Nav>
       </Navbar>
     );
