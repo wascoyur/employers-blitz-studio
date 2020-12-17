@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import CardItem from '../card/CardItem';
-import { getData } from '../../services/swap-service';
+import {getData, getPokeMain} from '../../services/swap-service';
 import ItemList from '../item-list/item-list';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -14,7 +14,8 @@ export default class ItemPage extends Component {
   };
   getActiveItem = (url) => {
     console.log('index-getActiveItem', url);
-    this.setState({ activeItem: url });
+    
+    this.setState({ activeItem: this.dowloadData(url.name) });
     //console.log('this.state.activeItem:', this.state.activeItem);
   };
   async componentDidMount() {
@@ -24,6 +25,14 @@ export default class ItemPage extends Component {
     this.setState({
       itemList: getdata.results
     });
+  }
+  async dowloadData(url = Math.floor(Math.random() * 10) ) {
+    
+    //url = url.match(/\/([0-9])*\/$/)
+    //console.log('card-downloadData-url', url)
+    const data = await getPokeMain(url);
+    console.log('url', url);
+    return await data;
   }
 
   render() {

@@ -1,8 +1,8 @@
 const _apiBase = 'https://pokeapi.co/api/v2/';
 
 const getData = async (id = 'pokemon/') => {
-  const res = await fetch(`${_apiBase}${id}`);
   console.log('getData fetch:', `${_apiBase}${id}`);
+  const res = await fetch(`${_apiBase}${id}`);
 
   if (!res.ok) {
     throw new Error('Что-то пошло не так:', res.statusText);

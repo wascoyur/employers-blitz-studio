@@ -905,10 +905,10 @@ export default class CardItem extends Component {
   };
   async dowloadData(url = 'pokemon/2') {
     if (!this.props) return;
-    //const name = 'name';
+    //url = url.match(/\/([0-9])*\/$/)
     //console.log('card-downloadData-url', url)
     const data = await getPokeMain(url);
-    //console.log('card-downloadData', data);
+    console.log('url', url);
     return await data;
   }
   async componentDidMount() {
@@ -934,8 +934,11 @@ export default class CardItem extends Component {
     console.log('componentDidUpdate', name);
   }
   render() {
-    const {
-      name,
+    let input = this.props.activeItem;
+    if (!input){
+      input = this.state.activeItem
+    }
+    const { name,
       sprites:{
         other:{
         dream_world:{
