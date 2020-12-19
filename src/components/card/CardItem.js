@@ -11,17 +11,21 @@ export default class CardItem extends Component {
   
   }
   componentDidUpdate(prevProps) {
+    if(this.props.isLoading)return
     const { name } = this.props.activeItem
-    console.log('card this.props', name);
-    if (prevProps.activeItem.name === name)return
+    // console.log('card this.props', name);
+    if (prevProps.activeItem != null){
+      if ( prevProps.activeItem.name === name)return
+    }
+    
 
     this.setState({
       activeItem: name
     });
-    console.log('componentDidUpdate', name);
+    // console.log('componentDidUpdate', name);
   }
   render() {
-    if(this.props.isLoading){
+    if(!this.props.activeItem){
       return(
         <Spinner animation="border" variant="primary" size="lg" />
       )

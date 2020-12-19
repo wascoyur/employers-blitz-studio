@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ListGroup } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
+import { ListGroup, Button } from 'react-bootstrap';
 import getData from '../../services/swap-service';
 
 export default class ItemList extends Component {
@@ -29,9 +29,13 @@ export default class ItemList extends Component {
     const { itemList } = this.props;
     const items = this.renderItems(itemList);
     return (
-      <ListGroup className="flex-grow-1" variant="primary">
-        {items}
-      </ListGroup>
+      <Fragment>
+        <ListGroup className="flex-grow-1" variant="primary">
+          <Button>Ранее</Button>
+          {items}
+          <Button>Далее</Button>
+        </ListGroup>
+      </Fragment>
     );
   }
 }

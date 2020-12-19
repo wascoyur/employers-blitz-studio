@@ -3,33 +3,13 @@ import CardItem from '../card/CardItem';
 import {getData, getPokeMain} from '../../services/swap-service';
 import ItemList from '../item-list/item-list';
 import { Container, Row, Col } from 'react-bootstrap';
+import './main-page.css'
 
 export default class MainPage extends Component {
   state = {
     isLoading: true,
     itemList: null,
-    activeItem: {
-      "name": "ditto",
-      "sprites": {
-        "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png",
-        "back_female": null,
-        "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/132.png",
-        "back_shiny_female": null,
-        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-        "front_female": null,
-        "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png",
-        "front_shiny_female": null,
-        "other": {
-          "dream_world": {
-            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg",
-            "front_female": null
-          },
-          "official-artwork": {
-            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png"
-          }
-        },
-      }
-    }
+    activeItem:null
   };
   async dowloadData(urlOrId) {
     
@@ -55,13 +35,20 @@ export default class MainPage extends Component {
     ;
     //console.log('this.state.activeItem:', this.state.activeItem);
   };
-  async componentDidMount() {
-    const query = '?limit=10&offset=22';
+  async getListOfPersons(limit, offset){
+    const query = `?limit=${limit}&offset=${offset}`;
     const getdata = await getData(`${query}`);
+    return getdata
+  }
+  componentDidMount() {
+    this.getListOfPersons()
+      .then((resp) =>{
+        this.setState({
+          itemList: resp.results,
+        })
+      })
 
-    this.setState({
-      itemList: getdata.results,
-    });
+    ;
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState === this.state) return
@@ -80,7 +67,7 @@ export default class MainPage extends Component {
                 />
               </Col>
               <Col>
-                <CardItem activeItem={this.state.activeItem} iaLoading={this.state.isLoading} />
+                <CardItem activeItem={this.state.activeItem} isLoading={this.state.isLoading} />
               </Col>
             </Row>
           </Container>

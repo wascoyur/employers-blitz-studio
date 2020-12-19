@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
 export default class Header extends Component {
   render() {
@@ -10,6 +10,12 @@ export default class Header extends Component {
           <Nav.Link>Рликамп</Nav.Link>
           <Nav.Link>Саватар</Nav.Link>
           <Nav.Link>Субердумп</Nav.Link>
+          <Form inline>
+            <FormControl type='text' placeholder="Найти персонажа" className="mr-sm-2"/>
+            <Button
+            onClick = {() =>{}}
+            >Найти</Button>
+          </Form>
         </Nav>
       </Navbar>
     );

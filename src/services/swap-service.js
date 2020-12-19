@@ -1,7 +1,7 @@
 const _apiBase = 'https://pokeapi.co/api/v2/pokemon/';
 
 const getData = async (id) => {
-  console.log('getData fetch:', `${_apiBase}${id}`);
+  // console.log('getData fetch:', `${_apiBase}${id}`);
   const res = await fetch(`${_apiBase}${id}`);
 
   if (!res.ok) {
@@ -13,13 +13,13 @@ const getData = async (id) => {
 
 const getFullUrl = async (urlOrId) => {
   const res = await fetch(`url`);
-  console.log('getFullUrl:', `url`);
+  // console.log('getFullUrl:', `url`);
 
   if (!res.ok) {
     throw new Error('Что-то пошло не так');
   }
   const out = await res.json();
-  console.log('getFullUrl:', out);
+  // console.log('getFullUrl:', out);
 
   return await out;
 };
@@ -31,7 +31,7 @@ const getPokeMain = async (nameOrId) => {
   //console.log('getPokeMain-pointer', pointer);
 
   const pokeMain = await getData(`${pointer}`);
-  console.log('getPokeMain-pokeMain', await pokeMain);
+  // console.log('getPokeMain-pokeMain', await pokeMain);
   return pokeMain;
 };
 export { getData, getPokeMain };
