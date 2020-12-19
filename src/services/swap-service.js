@@ -1,6 +1,6 @@
-const _apiBase = 'https://pokeapi.co/api/v2/';
+const _apiBase = 'https://pokeapi.co/api/v2/pokemon/';
 
-const getData = async (id = 'pokemon/') => {
+const getData = async (id) => {
   console.log('getData fetch:', `${_apiBase}${id}`);
   const res = await fetch(`${_apiBase}${id}`);
 
@@ -30,7 +30,7 @@ const getPokeMain = async (nameOrId) => {
   const pointer = `${nameOrId}`;
   //console.log('getPokeMain-pointer', pointer);
 
-  const pokeMain = await getData(`pokemon/${pointer}`);
+  const pokeMain = await getData(`${pointer}`);
   console.log('getPokeMain-pokeMain', await pokeMain);
   return pokeMain;
 };
