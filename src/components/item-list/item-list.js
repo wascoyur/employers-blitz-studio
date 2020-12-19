@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { ListGroup, Button } from 'react-bootstrap';
+import { ListGroup, Button, Spinner } from 'react-bootstrap';
 import getData from '../../services/swap-service';
 
 export default class ItemList extends Component {
-  state = {
-    itemList: [{ name: 'unown', url: 'https://pokeapi.co/api/v2/pokemon/201/' }]
-  };
+  
   async componentDidMount() {}
   renderItems(arr) {
     if (!arr) arr = this.state.itemList;
@@ -25,15 +23,28 @@ export default class ItemList extends Component {
       );
     });
   }
+  getItemListLastItem(){
+    const index = this.props.itemList
+    const lastItem = index[index.length - 1];
+    let lastIndex = Number(lastItem.url.match(/(\d+)(?!.*\d)/g)[0]);
+    return lastIndex
+  }
   render() {
+    if (this.props.itemList === null){
+      return <Spinner/>
+    }
     const { itemList } = this.props;
     const items = this.renderItems(itemList);
     return (
       <Fragment>
         <ListGroup className="flex-grow-1" variant="primary">
-          <Button>Ранее</Button>
+          <Button
+          
+          >Предыдущие</Button>
           {items}
-          <Button>Далее</Button>
+          <Button
+            onClick = {()=>{this.props.getNewList(5,this.getItemListLastItem())}}
+          >Следующие 5</Button>
         </ListGroup>
       </Fragment>
     );

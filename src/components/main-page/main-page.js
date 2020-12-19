@@ -19,7 +19,7 @@ export default class MainPage extends Component {
     //OrId = OrId.match(/\/([0-9])*\/$/)
     //console.log('card-downloadData-OrId', OrId)
     const data = await getPokeMain(urlOrId);
-    console.log('OrId', urlOrId);
+    // console.log('OrId', urlOrId);
     return await data;
   }
   getActiveItem = (url) => {
@@ -35,20 +35,19 @@ export default class MainPage extends Component {
     ;
     //console.log('this.state.activeItem:', this.state.activeItem);
   };
-  async getListOfPersons(limit, offset){
+   getListOfPersons = async(limit = 10, offset)=>{
+    
     const query = `?limit=${limit}&offset=${offset}`;
-    const getdata = await getData(`${query}`);
-    return getdata
-  }
-  componentDidMount() {
-    this.getListOfPersons()
+    await getData(`${query}`)
       .then((resp) =>{
+        console.log(resp.results)
         this.setState({
-          itemList: resp.results,
+          itemList: resp.results
         })
       })
-
-    ;
+  }
+  componentDidMount() {
+    this.getListOfPersons();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState === this.state) return
@@ -64,6 +63,7 @@ export default class MainPage extends Component {
                 <ItemList
                   getActive={this.getActiveItem}
                   itemList={this.state.itemList}
+                  getNewList = {this.getListOfPersons}
                 />
               </Col>
               <Col>
