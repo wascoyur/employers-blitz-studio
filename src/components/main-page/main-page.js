@@ -36,11 +36,11 @@ export default class MainPage extends Component {
     //console.log('this.state.activeItem:', this.state.activeItem);
   };
    getListOfPersons = async(limit = 10, offset)=>{
-    
+    if (offset < 0) offset = 0;
     const query = `?limit=${limit}&offset=${offset}`;
     await getData(`${query}`)
       .then((resp) =>{
-        console.log(resp.results)
+        // console.log(resp.results)
         this.setState({
           itemList: resp.results
         })

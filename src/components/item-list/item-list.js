@@ -3,8 +3,19 @@ import { ListGroup, Button, Spinner } from 'react-bootstrap';
 import getData from '../../services/swap-service';
 
 export default class ItemList extends Component {
+  state={
+    countItems:0
+  }
+  componentDidMount() {
+    //if (this.props.itemList == null)return
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps === this.props)return
+    // this.setState({
+    //   countItems:this.getBoundaryIndex()
+    // })
+  }
   
-  async componentDidMount() {}
   renderItems(arr) {
     if (!arr) arr = this.state.itemList;
     return arr.map((item, index) => {
@@ -23,13 +34,26 @@ export default class ItemList extends Component {
       );
     });
   }
-  getItemListLastItem(){
+  getBoundaryIndex = (reverse=false)=>{
+    if (reverse){}
     const index = this.props.itemList
-    const lastItem = index[index.length - 1];
-    let lastIndex = Number(lastItem.url.match(/(\d+)(?!.*\d)/g)[0]);
-    return lastIndex
+    let boundaryItem = 0;
+    if(reverse){
+     boundaryItem = this.props.itemList[0]
+    }else{
+      boundaryItem = this.props.itemList[index.length - 1];
+    }
+    let boundaryIndex = boundaryItem.url.match(/(\d+)(?!.*\d)/g)[0];
+
+    return Number(boundaryIndex)
   }
   render() {
+    const countList = 5
+       let btnOff = () =>{
+      const t = this.getBoundaryIndex(true) - countList;
+      return t < 0 ? true : false
+     }
+    
     if (this.props.itemList === null){
       return <Spinner/>
     }
@@ -39,11 +63,14 @@ export default class ItemList extends Component {
       <Fragment>
         <ListGroup className="flex-grow-1" variant="primary">
           <Button
-          
-          >Предыдущие</Button>
+            disabled ={btnOff()}
+            onClick = {()=>{
+              this.props.getNewList(countList,this.getBoundaryIndex(true) -countList )
+            }}
+          >Предыдущие {countList}</Button>
           {items}
           <Button
-            onClick = {()=>{this.props.getNewList(5,this.getItemListLastItem())}}
+            onClick = {()=>{this.props.getNewList(countList,this.getBoundaryIndex())}}
           >Следующие 5</Button>
         </ListGroup>
       </Fragment>
