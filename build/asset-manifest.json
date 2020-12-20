@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/employers-blitz-studio/build/static/css/main.061add03.chunk.css",
+    "main.js": "/employers-blitz-studio/build/static/js/main.94e0c484.chunk.js",
+    "main.js.map": "/employers-blitz-studio/build/static/js/main.94e0c484.chunk.js.map",
+    "runtime-main.js": "/employers-blitz-studio/build/static/js/runtime-main.a0f45b35.js",
+    "runtime-main.js.map": "/employers-blitz-studio/build/static/js/runtime-main.a0f45b35.js.map",
+    "static/js/2.0476af44.chunk.js": "/employers-blitz-studio/build/static/js/2.0476af44.chunk.js",
+    "static/js/2.0476af44.chunk.js.map": "/employers-blitz-studio/build/static/js/2.0476af44.chunk.js.map",
+    "index.html": "/employers-blitz-studio/build/index.html",
+    "static/css/main.061add03.chunk.css.map": "/employers-blitz-studio/build/static/css/main.061add03.chunk.css.map",
+    "static/js/2.0476af44.chunk.js.LICENSE.txt": "/employers-blitz-studio/build/static/js/2.0476af44.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0f45b35.js",
+    "static/js/2.0476af44.chunk.js",
+    "static/css/main.061add03.chunk.css",
+    "static/js/main.94e0c484.chunk.js"
+  ]
+}
